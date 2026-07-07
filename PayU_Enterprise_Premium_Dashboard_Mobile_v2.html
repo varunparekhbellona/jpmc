@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Premium Settlement Dashboard</title>
+<style>
+:root{--bg:#f5f8f7;--card:rgba(255,255,255,.9);--line:#e4ecea;--g:#2f6f66;--g2:#4f8f86;--t:#193934;--m:#708682}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial;background:var(--bg);color:var(--t);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;border-radius:50%;filter:blur(90px);z-index:-1;animation:f 18s ease-in-out infinite}
+body:before{width:380px;height:380px;background:#d6ece6;left:-120px;top:-80px}body:after{width:480px;height:480px;background:#e5f4f0;right:-150px;bottom:-120px;animation-duration:24s}
+@keyframes f{50%{transform:translate(30px,-20px)}}
+.top{max-width:1350px;margin:auto;padding:28px 36px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:31px;font-weight:800;color:var(--g)}
+.live{padding:10px 18px;border:1px solid var(--line);border-radius:999px;background:#fff}.live:before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--g);margin-right:10px;animation:p 1.5s infinite}
+@keyframes p{50%{box-shadow:0 0 0 10px rgba(47,111,102,.12)}}
+.wrap{max-width:1350px;margin:auto;padding:0 36px 36px;display:grid;grid-template-columns:260px 1fr 340px;gap:22px}
+.side,.main,.right{background:var(--card);border:1px solid var(--line);border-radius:30px;backdrop-filter:blur(20px);box-shadow:0 18px 40px rgba(0,0,0,.05)}
+.side{padding:24px}.nav{padding:14px 16px;border-radius:16px;margin:8px 0}.nav.active{background:#eef6f4;color:var(--g);font-weight:700}
+.main{padding:28px}.hero{display:grid;grid-template-columns:180px 1fr;gap:26px}
+.ring{width:165px;height:165px;border-radius:50%;padding:12px;background:#e6efed;border:2px solid #d8e4e1}
+.water{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#fff;display:flex;justify-content:center;align-items:center}
+.wave,.wave2{position:absolute;left:-20%;width:140%;background:linear-gradient(180deg,var(--g2),var(--g));border-radius:42%}
+.wave{height:74%;bottom:-6%;animation:w1 7s ease-in-out infinite}
+.wave2{height:70%;bottom:-8%;opacity:.35;animation:w2 9s ease-in-out infinite}
+.wave:before,.wave2:before{content:'';position:absolute;left:-5%;top:-10px;width:110%;height:22px;background:rgba(255,255,255,.28);border-radius:50%}
+@keyframes w1{0%{transform:translateX(-4%) rotate(0deg)}25%{transform:translateX(3%) rotate(1deg)}50%{transform:translateX(6%) translateY(-3px)}75%{transform:translateX(-2%) rotate(-1deg)}100%{transform:translateX(-4%)}}
+@keyframes w2{0%{transform:translateX(4%)}50%{transform:translateX(-5%) translateY(3px)}100%{transform:translateX(4%)}}
+.per{position:relative;z-index:2;font-size:30px;font-weight:800}
+h1{margin:0;font-size:40px}.sub{color:var(--m);margin-top:8px}.amt{font-size:56px;font-weight:800;color:var(--g);margin:16px 0}
+.bar{height:10px;background:#e7efed;border-radius:99px;overflow:hidden}.fill{height:100%;width:90%;background:linear-gradient(90deg,var(--g),var(--g2));background-size:200% 100%;animation:g 3s linear infinite}@keyframes g{to{background-position:200%}}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}.c{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}.l{font-size:11px;color:var(--m);text-transform:uppercase}.v{font-weight:700;margin-top:7px}
+.timeline{margin-top:24px}.s{display:flex;gap:12px;padding:10px 0}.d{width:18px;height:18px;border-radius:50%;background:var(--g)}.pending .d{animation:pp 1.4s infinite}@keyframes pp{50%{transform:scale(1.2)}}.ln{width:2px;height:24px;background:#d9e5e2;margin-left:8px}
+.right{padding:24px}.kpi{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.log{height:240px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;font-family:monospace;overflow:auto;margin-top:18px}
+.btns{display:flex;gap:14px;margin-top:22px}button{flex:1;padding:15px;border:none;border-radius:999px;font-weight:700}.a{background:linear-gradient(90deg,var(--g),var(--g2));color:#fff}.b{background:#fff;border:1px solid var(--line);color:var(--g)}
+@media(max-width:1100px){.wrap{grid-template-columns:1fr}.hero{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.ring{margin:auto}.side{display:none}}
+
+@media(max-width:1100px){
+.wrap{grid-template-columns:1fr;padding:0 16px 24px}
+.top{padding:18px 16px}
+.hero{grid-template-columns:1fr;gap:18px}
+.cards{grid-template-columns:1fr}
+.ring{margin:0 auto}
+.side{display:none}
+.main,.right{padding:18px;border-radius:22px}
+.amt{font-size:40px;word-break:break-word}
+h1{font-size:30px}
+.logo{font-size:24px}
+.v{word-break:break-word}
+.btns{flex-direction:column}
+button{width:100%}
+}
+@media(max-width:480px){
+body{font-size:14px}
+.wrap{padding:0 10px 18px}
+.top{padding:14px 10px}
+.hero{gap:14px}
+.ring{width:140px;height:140px}
+.cards .c{padding:12px}
+.amt{font-size:34px}
+h1{font-size:26px}
+.right,.main{overflow:hidden}
+}
+
+</style></head><body>
+<div class=top><div class=logo>PayU Business</div><div class=live>LIVE SETTLEMENT</div></div>
+<div class=wrap>
+<div class=side><h3>Dashboard</h3><div class="nav active">Settlement</div><div class=nav>Transactions</div><div class=nav>Analytics</div><div class=nav>Banking</div><div class=nav>Security</div><div class=nav>Reports</div></div>
+<div class=main>
+<div class=hero><div class=ring><div class=water><div class=wave></div><div class=wave2></div><div class=per>90%</div></div></div>
+<div><h1>Settlement In Progress</h1><div class=sub>Funds are moving through the acquiring banking network.</div><div class=amt>₹70,400.00</div><div class=bar><div class=fill></div></div><div class=sub style="margin-top:10px">Expected Settlement • <b>07 July 2026</b> • <b>11:00 PM IST</b></div></div></div>
+<div class=cards>
+<div class=c><div class=l>Beneficiary</div><div class=v>Vivekananda Nursing College XX7868</div></div>
+<div class=c><div class=l>Transaction ID</div><div class=v>20240214114721541a331959</div></div>
+<div class=c><div class=l>PayU ID</div><div class=v>19179463379</div></div>
+<div class=c><div class=l>Bank Reference</div><div class=v>404511140192</div></div>
+<div class=c><div class=l>Gateway</div><div class=v>HPYIndusInd</div></div>
+<div class=c><div class=l>Compliance</div><div class=v>PCI DSS • TLS 1.3 • RBI</div></div>
+</div>
+<div class=timeline>
+<div class=s><div class=d></div><div>Payment Authorized</div></div><div class=ln></div>
+<div class=s><div class=d></div><div>Payment Captured</div></div><div class=ln></div>
+<div class=s><div class=d></div><div>Risk Verification Completed</div></div><div class=ln></div>
+<div class="s pending"><div class=d></div><div>Settlement Queued</div></div><div class=ln></div>
+<div class=s><div class=d style="background:#d6e2df"></div><div>Funds Credited</div></div>
+</div>
+<div class=btns><button class=a>Refresh Status</button><button class=b>Download Receipt</button></div>
+</div>
+<div class=right><h3>Settlement Summary</h3>
+<div class=kpi><span>Gross Amount</span><b>₹70,400.00</b></div>
+<div class=kpi><span>Gateway Charges</span><b>Pending</b></div>
+<div class=kpi><span>GST</span><b>Pending</b></div>
+<div class=kpi><span>Net Settlement</span><b>Pending</b></div>
+<h3 style="margin-top:18px">Live Processing</h3><div class=log id=log></div></div>
+</div>
+<script>
+const e=["09:41 Payment received","09:41 Authorization successful","09:41 Fraud checks complete","09:41 Merchant verified","09:41 Batch allocated","09:41 Awaiting acquiring bank","09:41 Settlement processing..."];let i=0;function a(){if(i<e.length){log.innerHTML+=e[i++]+"<br>";log.scrollTop=9999;setTimeout(a,500)}}a();
+</script></body></html>
